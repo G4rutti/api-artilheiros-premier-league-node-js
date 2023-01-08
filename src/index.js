@@ -12,7 +12,8 @@ app.get('/', (req, res) => {
     res.send("Hello World")
 })
 
+app.listen(porta, () => console.log("Api rodando na porta 3000"))
+
 userRoute(app)
 
-app.listen(porta, () => console.log("Api rodando na porta 3000"))
 
