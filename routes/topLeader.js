@@ -3,7 +3,7 @@ const cheerio = require('cheerio')
 const fs = require('fs')
 const {join} = require('path')
 
-const filePath = join(__dirname, 'users.json')
+const filePath = join(__dirname, 'topLeadersPL.json')
 
 const SaveLeader = (users) => {
     fs.writeFileSync(filePath,JSON.stringify(users,null,'\t'))
@@ -62,7 +62,7 @@ const userRoute = (app) =>{
         } catch (error) {
             res.status(500).json({error : error})
         }
-    fs.unlink("users.json")
+    fs.unlink("topLeadersPL.json")
     })
 }
 
