@@ -1,10 +1,13 @@
 const express = require("express")
 const bodyParser = require("body-parser")
+const Parse = require('parse/node');
+
+
 
 const userRoute = require('../routes/topLeader') // importando funçoes
 
 const app = express()
-const porta = 3000
+const porta = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({extended: false}))
 

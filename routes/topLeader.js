@@ -35,16 +35,18 @@ const main = async () => {
     $('div#yw1 table.items tbody tr').each((i, e) => {
         const AllElements = $(e).find('td')
         const posicaoRanking = $(AllElements[0]).text()
+        const imagemArtilheiro = $(AllElements[2]).find('img').attr('data-src')
         const nomeArtilheiro = $(AllElements[1]).find('table > tbody > tr > td.hauptlink > a').text()
         const nacionalidade = $(AllElements[5]).find('img').attr('title')
         const idade = $(AllElements[6]).text()
         const clube = $(AllElements[7]).find('a').attr('title')
+        const imagemClube = $(AllElements[7]).find('a > img').attr('src')
         const jogos = $(AllElements[8]).find('a').text()
         const gols = $(AllElements[9]).find('a').text()
         
 
         if(nomeArtilheiro != ""){
-            const data = {posicaoRanking, nomeArtilheiro, nacionalidade, idade, clube, jogos, gols}
+            const data = {posicaoRanking, imagemArtilheiro, nomeArtilheiro, nacionalidade, idade, clube, imagemClube, jogos, gols}
             artilheiros.push(data)
         }
         SaveLeader(artilheiros)
@@ -56,8 +58,8 @@ const userRoute = (app) =>{
     main()
     app.get('/pl',(req, res) => {
         try {
-            const users = getLeader()
-            res.send({users})
+            const leaders = getLeader()
+            res.send({leaders})
             return
         } catch (error) {
             res.status(500).json({error : error})
